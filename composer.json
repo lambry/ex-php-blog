@@ -1,0 +1,18 @@
+{
+    "name": "ex-php-blog",
+    "authors": [
+        {
+            "name": "David Featherston",
+            "email": "david@lambry.com"
+        }
+    ],
+    "description": "A super tiny/basic PHP example blog.",
+    "autoload": {
+        "classmap": [
+            "./app/"
+        ],
+        "files": [
+            "app/utilities/helpers.php"
+        ]
+    }
+}
