@@ -6,7 +6,7 @@ use PDOException;
 
 class Database
 {
-    // Store PDO and table ref
+    // Store PDO/table ref
     protected $pdo;
     protected $table;
 
@@ -57,8 +57,8 @@ class Database
      * @return array $posts 
      */
     public function all() : array
-    {
-        $statement = $this->pdo->prepare("select * from {$this->table}");
+    {   
+        $statement = $this->pdo->prepare("select * from {$this->table} order by id desc");
 
         $statement->execute();
 
@@ -72,13 +72,56 @@ class Database
      * @param string $value
      * @return object $post
      */
-    public function where(string $field, $value)
+    public function where(string $field, string $value) : \stdClass
     {
-        $statement = $this->pdo->prepare("select * from {$this->table} where slug = :value");
+        $statement = $this->pdo->prepare("select * from {$this->table} where $field = :value");
 
         $statement->execute([':value' => $value]);
 
         return $statement->fetch(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * Insert a new row
+     * 
+     * @param array $data
+     * @return bool $success
+     */
+    public function insert(array $data) : bool
+    {
+        extract($data);
+
+        $statement = $this->pdo->prepare("insert into {$this->table} (title, slug, content) values (:title, :slug, :content)");
+
+        return $statement->execute([':title' => $title, ':slug' => $slug, ':content' => $content]);
+    }
+
+    /**
+     * Update an existing row
+     * 
+     * @param array $data
+     * @return bool $success
+     */
+    public function update(array $data) : bool
+    {
+        extract($data);
+
+        $statement = $this->pdo->prepare("update {$this->table} set title = :title, slug = :slug, content = :content where id = :id");
+
+        return $statement->execute([':title' => $title, ':slug' => $slug, ':content' => $content, ':id' => $id]);
+    }
+
+    /**
+     * Delete a existing row
+     * 
+     * @param int $id
+     * @return bool $success
+     */
+    public function delete(int $id): bool
+    {
+        $statement = $this->pdo->prepare("delete from {$this->table} where id = :id");
+
+        return $statement->execute([':id' => $id]);
     }
 
 }

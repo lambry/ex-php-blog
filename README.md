@@ -1,3 +1,3 @@
 # EX PHP Blog
 
-A super tiny/basic PHP example blog.
+A very basic, completely fictitious PHP example blog.

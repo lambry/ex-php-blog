@@ -6,13 +6,13 @@
             "email": "david@lambry.com"
         }
     ],
-    "description": "A super tiny/basic PHP example blog.",
+    "description": "A very basic, completely fictitious PHP example blog.",
     "autoload": {
         "classmap": [
-            "./app/"
+            "core/", "app/"
         ],
         "files": [
-            "app/utilities/helpers.php"
+            "core/utilities.php"
         ]
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'name' => 'ex-php-blog',
     'database' => [
         'name' => '',
         'username' => '',

@@ -8,7 +8,7 @@ class App
     protected static $store = [];
 
     /**
-     * Bind a new key/value into the container
+     * Bind a new key/value into the app store
      *
      * @param string $key
      * @param mixed $value
@@ -19,7 +19,7 @@ class App
     }
 
     /**
-     * Retrieve and use a value from the store
+     * Retrieve and use a value from the app store
      *
      * @param string $key
      * @return mixed $value

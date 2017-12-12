@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
     <title>EX PHP Blog</title>
 </head>
 <body>
@@ -12,4 +12,5 @@
 
         <header class="row">
             <a href="/" class="logo">Example PHP Blog</a>
+            <a href="/admin/new" class="button button-new">New Post</a>
         </header>
